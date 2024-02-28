@@ -11,17 +11,16 @@ It's important that the dataset is compressed in a `.tar.xz` file for its good c
 To download, extract and load a dataset, you can use the following code:
 
 ```python
-import pandas as pd
-import urllib.request
-import tarfile
 from pathlib import Path
+import tarfile
+import urllib.request
+import pandas as pd
 
 
-def load_dataset(data_url: str, data_file: str, extension: str = ".tar.xz"):
+def load_dataset(data_file: str, extension: str = ".tar.xz"):
     """Download and extract a a file from a URL, and load a CSV file into a DataFrame.
 
     Args:
-        data_url (str): url to the raw data
         data_file (str): name of the CSV file
         extension (str, optional): extension of the compressed file. Defaults to ".tar.xz".
 
@@ -29,6 +28,7 @@ def load_dataset(data_url: str, data_file: str, extension: str = ".tar.xz"):
         _type_: pandas.DataFrame
     """
     tarball_path = Path(f"datasets/{data_file + extension}")
+    data_url = "https://github.com/joaoalexarruda/data_ipp/raw/main/" + data_file + extension
     if not tarball_path.is_file():
         Path("datasets").mkdir(exist_ok=True, parents=True)
         urllib.request.urlretrieve(data_url, tarball_path)

@@ -8,7 +8,7 @@ It's important that the dataset is compressed in a `.tar.xz` file for its good c
 
 ## How to use
 
-To download, extract and load a dataset, you can use the following code:
+To download and extract a dataset, you can use the following code:
 
 ```python
 from pathlib import Path
